@@ -1,0 +1,5 @@
+bin/
+obj/
+AttendanceSystem/attendance.db
+AttendanceSystem/attendance.db-shm
+AttendanceSystem/attendance.db-wal
