@@ -39,6 +39,13 @@ This repository contains a .NET 8 web API and static front-end for managing univ
    dotnet run --project AttendanceApp.csproj --urls "http://localhost:5000"
    ```
 
+   > **ملاحظة:** إذا استمر ظهور الخطأ `MSBUILD : error MSB1009: Project file does not exist` فغالبًا لم تنتقل بعد إلى المجلد الذي يحتوي على `AttendanceApp.csproj`.
+   > تأكد من تنفيذ أمر `dir AttendanceApp.csproj`. كاختصار، يمكنك تشغيل السكربت الجديد `run.ps1` الذي يحدد المسار الصحيح تلقائيًا:
+   > ```powershell
+   > .\run.ps1
+   > ```
+   > يمكن تمرير منفذ مختلف عبر المعامل `-Urls` مثلًا: `.\run.ps1 -Urls "http://localhost:6000"`.
+
 6. Once the application starts, open Swagger at [http://localhost:5000/swagger](http://localhost:5000/swagger) to explore the API. The static front-end is available at [http://localhost:5000](http://localhost:5000).
 
 ## Database
