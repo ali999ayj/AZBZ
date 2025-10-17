@@ -1,73 +1,401 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="./logo-fave.png" <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="style.css">
-    <title>إئتلاف دولة القانون</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام الحضور والغياب الجامعي</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <nav>
-        <div class="nav-container d-flex justify-content-center">
-            <div class="logo mx-auto" data-aos-="zoom-in" data-aos-duration="1500">
-                <span style="color: #d11b1b;">إئـتـلاف دولــة القــانون  </span>
-            </div>
-            
-            <div class="links">
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="#">عـــون و
-                        ســند </a></div>
-            </div>
-
-
-
-    </nav>
-    <section>
-        <div class="main-container">
-            <div class="image" data-aos="zoom-out" data-aos-duration="3500">
-
-                <img src="loogo.PNG" alt="">
-
-            </div>
-            <div class="content">
-                <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">أهلا بكم في <span>إئتلاف
-                        دولــة القــانون</span></h1>
-                <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">نحن >> <span
-                        class="typewriter-text"></span><label for="">|</label></div>
-                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">ائتلاف دولة القانون هو تحالف
-                    سياسي عراقي يسعى إلى بناء دولة قوية ومستقرة، ترتكز على سيادة القانون وتحقق العدالة الاجتماعية. يهدف
-                    الائتلاف إلى تحقيق الاستقرار السياسي والأمني، ومكافحة الفساد، وتحسين مستوى معيشة المواطنين، وتعزيز
-                    مكانة العراق إقليمياً ودولياً. </p>
-                <div class="social-links">
-                    <a href="https://t.me/bashaerTL" data-aos="fade-up" data-aos-duration="1500"
-                        data-aos-delay="1300"><i class="fa-brands fa-telegram"></i></a>
-                    <a href="https://www.facebook.com/stateoflaww/?locale=ar_AR" data-aos="fade-up"
-                        data-aos-duration="1500" data-aos-delay="1400"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/mal_h10/?hl=ar" data-aos="fade-up" data-aos-duration="1500"
-                        data-aos-delay="1500"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://x.com/nourialmalikiiq" data-aos="fade-up" data-aos-duration="1500"
-
-                        data-aos-delay="1600"><i class="fa-brands fa-twitter"></i></a>
-                </div>
-                <a class="btn" href="https://form.jotform.com/243615049270454" data-aos="zoom-in"
-                    data-aos-duration="1500" data-aos-delay="1800">
-                    <button>سجـل من هنا</button>
-
-
-                </a>
-            </div>
+    <header class="hero">
+        <div class="hero__content">
+            <h1>نظام الحضور والغياب</h1>
+            <p>
+                لوحة تحكم بسيطة للتعامل مع الكيانات، بناء الجدول، رفع ملفات Excel ومراجعة التقارير عبر
+                الـAPI.
+            </p>
+            <nav class="hero__nav">
+                <a href="#entities">الكيانات</a>
+                <a href="#schedule">الجدول والمرونة</a>
+                <a href="#imports">استيراد Excel</a>
+                <a href="#reports">التقارير</a>
+            </nav>
         </div>
-    </section>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({ offset: 0 });
-    </script>
+    </header>
+
+    <main>
+        <section id="entities" class="card">
+            <h2>إدارة الكيانات بالأسماء</h2>
+            <p class="section-intro">اختر الكيان المطلوب، أدخل القيم بالأسماء فقط ثم اضغط على تنفيذ.</p>
+            <div class="grid">
+                <form id="form-university" class="form">
+                    <h3>جامعة</h3>
+                    <label>اسم الجامعة
+                        <input name="universityName" required placeholder="مثال: جامعة بغداد" />
+                    </label>
+                    <div class="form__actions">
+                        <button data-action="create">إنشاء</button>
+                        <button data-action="rename" type="button">إعادة تسمية</button>
+                        <button data-action="delete" type="button" class="danger">حذف</button>
+                    </div>
+                    <label class="hidden" data-field="newName">الاسم الجديد
+                        <input name="newName" placeholder="الاسم الجديد" />
+                    </label>
+                </form>
+
+                <form id="form-college" class="form">
+                    <h3>كلية</h3>
+                    <label>اسم الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>اسم الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <div class="form__actions">
+                        <button data-action="create">إنشاء</button>
+                        <button data-action="rename" type="button">إعادة تسمية</button>
+                        <button data-action="delete" type="button" class="danger">حذف</button>
+                    </div>
+                    <label class="hidden" data-field="newName">الاسم الجديد
+                        <input name="newName" placeholder="الاسم الجديد" />
+                    </label>
+                </form>
+
+                <form id="form-department" class="form">
+                    <h3>قسم</h3>
+                    <label>اسم الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>اسم الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>اسم القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <div class="form__actions">
+                        <button data-action="create">إنشاء</button>
+                        <button data-action="rename" type="button">إعادة تسمية</button>
+                        <button data-action="delete" type="button" class="danger">حذف</button>
+                    </div>
+                    <label class="hidden" data-field="newName">الاسم الجديد
+                        <input name="newName" placeholder="الاسم الجديد" />
+                    </label>
+                </form>
+
+                <form id="form-stage" class="form">
+                    <h3>مرحلة (اختياري)</h3>
+                    <label>الجامعة
+                        <input name="universityName" />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" />
+                    </label>
+                    <label>اسم المرحلة
+                        <input name="stageName" />
+                    </label>
+                    <div class="form__actions">
+                        <button data-action="create">إنشاء</button>
+                        <button data-action="rename" type="button">إعادة تسمية</button>
+                        <button data-action="delete" type="button" class="danger">حذف</button>
+                    </div>
+                    <label class="hidden" data-field="newName">الاسم الجديد
+                        <input name="newName" placeholder="الاسم الجديد" />
+                    </label>
+                </form>
+
+                <form id="form-group" class="form">
+                    <h3>كروب</h3>
+                    <label>الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <label>المرحلة (إن وجدت)
+                        <input name="stageName" />
+                    </label>
+                    <label>اسم الكروب
+                        <input name="groupName" required />
+                    </label>
+                    <label>النوع
+                        <select name="kind" required>
+                            <option value="Theory">نظري</option>
+                            <option value="Practical">عملي</option>
+                        </select>
+                    </label>
+                    <div class="form__actions">
+                        <button data-action="create">إنشاء</button>
+                        <button data-action="rename" type="button">إعادة تسمية</button>
+                        <button data-action="delete" type="button" class="danger">حذف</button>
+                    </div>
+                    <label class="hidden" data-field="newName">الاسم الجديد
+                        <input name="newName" placeholder="الاسم الجديد" />
+                    </label>
+                </form>
+
+                <form id="form-course" class="form">
+                    <h3>مادة</h3>
+                    <label>الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <label>اسم المادة
+                        <input name="courseName" required />
+                    </label>
+                    <div class="form__actions">
+                        <button data-action="create">إنشاء</button>
+                        <button data-action="rename" type="button">إعادة تسمية</button>
+                        <button data-action="delete" type="button" class="danger">حذف</button>
+                    </div>
+                    <label class="hidden" data-field="newName">الاسم الجديد
+                        <input name="newName" placeholder="الاسم الجديد" />
+                    </label>
+                </form>
+
+                <form id="form-instructor" class="form">
+                    <h3>تدريسي</h3>
+                    <label>الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <label>اسم التدريسي الكامل
+                        <input name="instructorName" required />
+                    </label>
+                    <div class="form__actions">
+                        <button data-action="create">إنشاء</button>
+                        <button data-action="rename" type="button">إعادة تسمية</button>
+                        <button data-action="delete" type="button" class="danger">حذف</button>
+                    </div>
+                    <label class="hidden" data-field="newName">الاسم الجديد
+                        <input name="newName" placeholder="الاسم الجديد" />
+                    </label>
+                </form>
+
+                <form id="form-room" class="form">
+                    <h3>قاعة</h3>
+                    <label>الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <label>اسم القاعة
+                        <input name="roomName" required />
+                    </label>
+                    <div class="form__actions">
+                        <button data-action="create">إنشاء</button>
+                        <button data-action="rename" type="button">إعادة تسمية</button>
+                        <button data-action="delete" type="button" class="danger">حذف</button>
+                    </div>
+                    <label class="hidden" data-field="newName">الاسم الجديد
+                        <input name="newName" placeholder="الاسم الجديد" />
+                    </label>
+                </form>
+            </div>
+            <pre id="entity-result" class="result"></pre>
+        </section>
+
+        <section id="schedule" class="card">
+            <h2>الجدول والمرونة</h2>
+            <div class="grid">
+                <form id="form-schedule-entry" class="form">
+                    <h3>إضافة جدول دائم</h3>
+                    <label>الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <label>المرحلة (إن وجدت)
+                        <input name="stageName" />
+                    </label>
+                    <label>اسم الكروب
+                        <input name="groupName" required />
+                    </label>
+                    <label>نوع الكروب
+                        <select name="groupKind" required>
+                            <option value="Theory">نظري</option>
+                            <option value="Practical">عملي</option>
+                        </select>
+                    </label>
+                    <label>اسم المادة
+                        <input name="courseName" required />
+                    </label>
+                    <label>اسم التدريسي
+                        <input name="instructorName" required />
+                    </label>
+                    <label>اسم القاعة
+                        <input name="roomName" required />
+                    </label>
+                    <label>اليوم
+                        <select name="day" required>
+                            <option value="Saturday">السبت</option>
+                            <option value="Sunday">الأحد</option>
+                            <option value="Monday">الإثنين</option>
+                            <option value="Tuesday">الثلاثاء</option>
+                            <option value="Wednesday">الأربعاء</option>
+                            <option value="Thursday">الخميس</option>
+                            <option value="Friday">الجمعة</option>
+                        </select>
+                    </label>
+                    <label>وقت البداية
+                        <input name="start" type="time" required />
+                    </label>
+                    <label>وقت النهاية
+                        <input name="end" type="time" required />
+                    </label>
+                    <button>حفظ الجدول</button>
+                </form>
+
+                <form id="form-schedule-override" class="form">
+                    <h3>استثناء مرن ليوم واحد</h3>
+                    <label>الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <label>المرحلة (إن وجدت)
+                        <input name="stageName" />
+                    </label>
+                    <label>اسم الكروب
+                        <input name="groupName" required />
+                    </label>
+                    <label>نوع الكروب
+                        <select name="groupKind" required>
+                            <option value="Theory">نظري</option>
+                            <option value="Practical">عملي</option>
+                        </select>
+                    </label>
+                    <label>اسم المادة
+                        <input name="courseName" required />
+                    </label>
+                    <label>اسم التدريسي
+                        <input name="instructorName" required />
+                    </label>
+                    <label>اسم القاعة
+                        <input name="roomName" required />
+                    </label>
+                    <label>التاريخ
+                        <input name="date" type="date" required />
+                    </label>
+                    <label>وقت البداية
+                        <input name="start" type="time" required />
+                    </label>
+                    <label>وقت النهاية
+                        <input name="end" type="time" required />
+                    </label>
+                    <button>حفظ الاستثناء</button>
+                </form>
+            </div>
+            <pre id="schedule-result" class="result"></pre>
+        </section>
+
+        <section id="imports" class="card">
+            <h2>استيراد ملفات Excel</h2>
+            <div class="grid">
+                <form id="form-import-students" class="form" enctype="multipart/form-data">
+                    <h3>استيراد طلاب</h3>
+                    <label>ملف Excel
+                        <input type="file" name="file" accept=".xlsx,.xls" required />
+                    </label>
+                    <button>رفع الملف</button>
+                </form>
+
+                <form id="form-import-attendance" class="form" enctype="multipart/form-data">
+                    <h3>استيراد سجلات الحضور</h3>
+                    <label>ملف Excel
+                        <input type="file" name="file" accept=".xlsx,.xls" required />
+                    </label>
+                    <button>رفع الملف</button>
+                </form>
+            </div>
+            <pre id="import-result" class="result"></pre>
+        </section>
+
+        <section id="reports" class="card">
+            <h2>التقارير</h2>
+            <div class="grid">
+                <form id="form-report-schedule" class="form">
+                    <h3>جدول اليوم</h3>
+                    <label>الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <label>اليوم (اختياري)
+                        <select name="day">
+                            <option value="">اليوم الحالي</option>
+                            <option value="Saturday">السبت</option>
+                            <option value="Sunday">الأحد</option>
+                            <option value="Monday">الإثنين</option>
+                            <option value="Tuesday">الثلاثاء</option>
+                            <option value="Wednesday">الأربعاء</option>
+                            <option value="Thursday">الخميس</option>
+                            <option value="Friday">الجمعة</option>
+                        </select>
+                    </label>
+                    <button>عرض الجدول</button>
+                </form>
+
+                <form id="form-report-attendance" class="form">
+                    <h3>ملخص الحضور</h3>
+                    <label>الجامعة
+                        <input name="universityName" required />
+                    </label>
+                    <label>الكلية
+                        <input name="collegeName" required />
+                    </label>
+                    <label>القسم
+                        <input name="departmentName" required />
+                    </label>
+                    <label>تاريخ البداية (اختياري)
+                        <input type="date" name="startDate" />
+                    </label>
+                    <label>تاريخ النهاية (اختياري)
+                        <input type="date" name="endDate" />
+                    </label>
+                    <button>عرض الملخص</button>
+                </form>
+            </div>
+            <pre id="reports-result" class="result"></pre>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>جاهز للعمل داخل الجامعة بدون أرقام تعريفية. جميع الحقول تعتمد على الأسماء فقط.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
-
 </html>
