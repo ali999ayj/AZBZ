@@ -1,0 +1,5 @@
+bin/
+obj/
+attendance.db
+attendance.db-shm
+attendance.db-wal
